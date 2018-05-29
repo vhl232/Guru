@@ -1,23 +1,29 @@
 package guru;
 
-import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Guru {
     static String url = "http://www.demo.guru99.com/V4/manager/Managerhomepage.php";
     static  String testUrl;
     public static void main(String[] args) {
-        System.setProperty("webdriver.gecko.driver","E:\\hachik NE TROGAT\\" +
-                "test\\selenium drivera\\Mozilla GeckoDriver\\geckodriver.exe");
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.demo.guru99.com/V4/");
+        //System.setProperty("webdriver.gecko.driver","E:\\hachik NE TROGAT\\" +
+               // "test\\selenium drivera\\Mozilla GeckoDriver\\geckodriver.exe");
+        //System.setProperty("webdriver.chrome.driver",Util.DRIVER_LOCATION);
+        setupSystem();
+        //WebDriver driver = new FirefoxDriver();
+        WebDriver driver = creatProfile();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get(Util.BASE_URL);
 
         FindPassword findPassword = new FindPassword(driver);
-        findPassword.passwordWebelement().sendKeys("rAtUqUt");
+        findPassword.passwordWebelement().sendKeys(Util.PASSWORD);
 
         FindUserId findUserId = new FindUserId(driver);
-        findUserId.userId().sendKeys("mngr135005");
+        findUserId.userId().sendKeys(Util.USER_ID);
 
         ButtonLogin buttonLogin = new ButtonLogin(driver);
         buttonLogin.buttonLogin().click();
@@ -26,6 +32,8 @@ public class Guru {
         testUrl = driver.getCurrentUrl();
 
         test1();
+
+        driver.quit();
 
     //driver.quit();
     }
@@ -38,6 +46,22 @@ public class Guru {
             System.out.println("test not passed");
         }
     }
+    public static void setupSystem(){
+        System.setProperty("webdriver.chrome.driver",Util.DRIVER_LOCATION);
+    }
+    private static WebDriver initWedriver(ChromeOptions options){
+        return new ChromeDriver(options);
+    }
+    private static WebDriver initWedriver(){
+        return initWedriver(null);
+    }
+    private static WebDriver creatProfile() {
+        String profileAdress = "C:\\Users\\Fat Faggy\\AppData\\Local\\Google\\Chrome\\User Data\\Default";
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("user-data-dir=" + profileAdress);
+        return initWedriver(options);
+    }
+
 
 }
 
