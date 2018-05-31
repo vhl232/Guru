@@ -1,15 +1,22 @@
 package guru;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Guru {
     static String url = "http://www.demo.guru99.com/V4/manager/Managerhomepage.php";
     static  String testUrl;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //System.setProperty("webdriver.gecko.driver","E:\\hachik NE TROGAT\\" +
                // "test\\selenium drivera\\Mozilla GeckoDriver\\geckodriver.exe");
         //System.setProperty("webdriver.chrome.driver",Util.DRIVER_LOCATION);
@@ -18,24 +25,34 @@ public class Guru {
         WebDriver driver = creatProfile();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(Util.BASE_URL);
+        Properties prop = new Properties();
+        //System.out.println(Arrays.toString(new File("../").list()));
+        FileInputStream read =  new FileInputStream("src/main/resources/prop.properties");
+        prop.load(read);
+        String id =  prop.getProperty("USER_ID");
+        String pasword = prop.getProperty("PASSWORD");
 
-        FindPassword findPassword = new FindPassword(driver);
-        findPassword.passwordWebelement().sendKeys(Util.PASSWORD);
 
-        FindUserId findUserId = new FindUserId(driver);
-        findUserId.userId().sendKeys(Util.USER_ID);
 
-        ButtonLogin buttonLogin = new ButtonLogin(driver);
-        buttonLogin.buttonLogin().click();
+        PageV4 pageV4 = new PageV4(driver);
+       // pageV4.passwordWebelement().sendKeys(Util.PASSWORD);
+
+       // pageV4.userId().sendKeys(Util.USER_ID);
+
+       // pageV4.buttonLogin().click();
 
 
         testUrl = driver.getCurrentUrl();
 
-        test1();
+        //test1();
+        test2(pageV4.passwordWebelement(),
+                pageV4.userId(),
+                pageV4.buttonLogin(),
+                pasword,
+                id);
 
         driver.quit();
 
-    //driver.quit();
     }
 
     public static void test1(){
@@ -60,6 +77,11 @@ public class Guru {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-data-dir=" + profileAdress);
         return initWedriver(options);
+    }
+    private static void test2(WebElement pass,WebElement id,WebElement click, String pasword,String logID){
+        pass.sendKeys(pasword);
+        id.sendKeys(logID);
+        click.click();
     }
 
 
