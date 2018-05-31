@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -44,12 +45,17 @@ public class Guru {
 
         testUrl = driver.getCurrentUrl();
 
+        Runnable rr = ()->{
+            prop.put("111", "123123123");
+        };
+
         //test1();
+        WebElementFunc s = ()->driver.findElement(By.xpath("//input[@name='uid']"));
         test2(pageV4.passwordWebelement(),
                 pageV4.userId(),
                 pageV4.buttonLogin(),
                 pasword,
-                id);
+                id, s);
 
         driver.quit();
 
@@ -78,11 +84,16 @@ public class Guru {
         options.addArguments("user-data-dir=" + profileAdress);
         return initWedriver(options);
     }
-    private static void test2(WebElement pass,WebElement id,WebElement click, String pasword,String logID){
+    private static void test2(WebElement pass,WebElement id,WebElement click, String pasword,String logID, WebElementFunc lamda1){
         pass.sendKeys(pasword);
-        id.sendKeys(logID);
+        lamda1.r().sendKeys(logID);
         click.click();
     }
+	Runnable r = ()->System.out.println(42);
+
+
+
+
 
 
 }
