@@ -5,23 +5,25 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class PageV4 {
-    WebDriver driver;
+    private WebDriver driver;
 
     public PageV4(WebDriver driver) {
         this.driver = driver;
+        driver.get(Util.BASE_URL);
     }
-    By password = By.xpath("//input[@name='password']");
+    private By password = By.xpath("//input[@name='password']");
 
     public WebElement passwordWebelement(){
         return driver.findElement(password);
     }
 
-    By userId = By.xpath("//input[@name='uid']");
+    private By userId = By.xpath("//input[@name='uid']");
 
     public WebElement userId(){
         return driver.findElement(userId);
     }
-    By login = By.xpath("//input[@name='btnLogin']");
+
+    private By login = By.xpath("//input[@name='btnLogin']");
 
     public WebElement buttonLogin(){
         return driver.findElement(login);
