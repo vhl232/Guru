@@ -84,7 +84,7 @@ public class Guru {
         options.addArguments("user-data-dir=" + profileAdress);
         return initWedriver(options);
     }
-    private static void test2(WebElement pass,WebElement id,WebElement click, String pasword,String logID, WebElementFunc lamda1){
+  public static void test2(WebElement pass,WebElement id,WebElement click, String pasword,String logID, WebElementFunc lamda1){
         pass.sendKeys(pasword);
         lamda1.r().sendKeys(logID);
         click.click();
