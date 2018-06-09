@@ -12,19 +12,16 @@ public class PageV4 {
         driver.get(Util.BASE_URL);
     }
     private By password = By.xpath("//input[@name='password']");
-
     public WebElement passwordWebelement(){
         return driver.findElement(password);
     }
 
     private By userId = By.xpath("//input[@name='uid']");
-
     public WebElement userId(){
         return driver.findElement(userId);
     }
 
     private By login = By.xpath("//input[@name='btnLogin']");
-
     public WebElement buttonLogin(){
         return driver.findElement(login);
     }

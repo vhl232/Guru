@@ -89,7 +89,7 @@ public class Guru {
         lamda1.r().sendKeys(logID);
         click.click();
     }
-	Runnable r = ()->System.out.println(42);
+
 
 
 
