@@ -22,9 +22,9 @@ public class FindTextDynamicTable {
     WebDriver driver;
     Logger logger = LoggerFactory.getLogger(FindTextDynamicTable.class);
     Properties prop;
-    public static String path = "E:\\selenium";
+    public static String path = "E:\\selenium\\";
 
-    @BeforeClass
+    @BeforeTest
     public void setSystem(){
         System.setProperty("webdriver.chrome.driver",Util.DRIVER_LOCATION);
         driver = WebDriverProvider.webDriverProvider();
@@ -32,7 +32,7 @@ public class FindTextDynamicTable {
         logger.info("set system property");
     }
 
-    @BeforeTest
+    @BeforeClass
     public void getInputData() throws IOException {
         FileInputStream fileInputStream = new FileInputStream("src/main/resources/prop.properties");
         prop = new Properties();
@@ -56,7 +56,7 @@ public class FindTextDynamicTable {
 
 
 
-    public void takeScreenShot(String a) throws IOException {
+    public  void takeScreenShot(String a) throws IOException {
         File screen = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(screen,new File(path+"_"+a+".png"));
     }
