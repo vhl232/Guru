@@ -3,6 +3,7 @@ package guru;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.testng.ITestContext;
+import org.testng.ITestNGMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -51,6 +52,7 @@ public class CreatGroupsAndDataProviding {
         }
         @Test(dataProvider = "DataGuru",groups = {"invaliData"})
         public void enterInvalidPass(String user,String pass) throws IOException {
+
             PageV4 pageV4 = new PageV4(driver);
             Guru.test2(pageV4.passwordWebelement(),
                     pageV4.userId(),
@@ -68,9 +70,9 @@ public class CreatGroupsAndDataProviding {
         }
 
         @DataProvider(name = "DataGuru")
-        public Object[][] dataProv(ITestContext a) {
+        public Object[][] dataProv( ITestNGMethod a) {
             Object[][] data = null;
-            for (String group : a.getIncludedGroups()) {
+            for (String group : a.getGroups()) {
                 if (group.equalsIgnoreCase("validData")) {
                      data =  new Object[][]{{"mngr135005", "rAtUqUt"}};
                 }
@@ -79,7 +81,7 @@ public class CreatGroupsAndDataProviding {
                                                   {"mngr135005", "qwqwq"}};
                 }
             }
-             return data;
+             return  data;
         }
 
     public  void takeScreenShot(String a) throws IOException {
