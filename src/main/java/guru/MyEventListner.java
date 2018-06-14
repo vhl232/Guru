@@ -20,10 +20,10 @@ public class MyEventListner extends AbstractWebDriverEventListener {
 
     @Override
     public void afterFindBy(By by, WebElement element, WebDriver driver) {
-        logger.info("find element "+elementDescription(element));
+        logger.info("find element ");//+elementDescription(element));
     }
 
-    private String elementDescription(WebElement element) {
+    /*private String elementDescription(WebElement element) {
         String description = "tag:" + element.getTagName();
         if (element.getAttribute("id") != null) {
             description += " id: " + element.getAttribute("id");
@@ -34,5 +34,6 @@ public class MyEventListner extends AbstractWebDriverEventListener {
         description += " ('" + element.getText() + "')";
 
         return description;
-    }
+    } */
+
 }

@@ -10,12 +10,12 @@ import java.sql.*;
 
 public class TestNgWhithSQL {
     private  WebDriver driver;
-    private  String  dbUrl = "jdbc:mysql://localhost:3306/sql?useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private  String  dbUrl = "jdbc:mysql://localhost:3306/user?useLegacyDatetimeCode=false&serverTimezone=UTC";
     //"jdbc:mysql://localhost:3306/Peoples?autoReconnect=true&useSSL=false";
-    private String username = "VOZA";
+    private String username = "root";//"VOZA";
     String password = "1111";
 
-    String query = "SELECT * FROM `sql`.user_password;";
+    String query = "SELECT * FROM `user`.user_password;";
     ResultSet resultQuery;
     Connection connection;
 
