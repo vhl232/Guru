@@ -17,7 +17,9 @@ public class WorkWithString {
 	    //metod2(stroka);
 	   // metod3(stroka);
 	    //metod4(stroka);
-	    metod5(stroka);
+	   // metod5(stroka);
+	    //metod6(stroka);
+		method("sobaka");
 	}
 
 	private static void metod(String a){
@@ -77,6 +79,31 @@ public class WorkWithString {
 		}
 		System.out.println(stringBuilder.reverse());
 		//new StringBuilder(a).reverse().toString()
+	}
+
+	private static void metod6(String a){
+		String b = a.replaceAll("hui","***")
+				.replaceAll("pizda", "*****");
+		System.out.println(b);
+	}
+	private static void method(String s){
+		StringBuffer sb = new StringBuffer(s);
+		sb.append("Как жил?— Я не жил.— Что узнал?— \n")
+				.append("Забыл. Я только помню, как тебя любил. \n")
+				.append("Так взвейся вихрем это восклицанье! \n")
+				.append("Разлейся в марте, ржавая вода, \n")
+				.append("Рассмейся, жизнь, над словом \"никогда!\", \n")
+				.append("Все остальное остается в тайне.");
+
+		sb.append("\n\n");
+		sb.append("Циркачка в черно-золотом трико,-\n")
+				.append("Лети сквозь мир так дико, так легко, \n")
+		.append("Так высоко, с таким весельем дерзким, \n")
+		.append("Так издевательски не по-людски, \n")
+		.append("Что самообладанием тоски\n")
+		.append("Тебе делиться в самом деле не с кем!");
+		String ss = sb.toString();
+		System.out.println(ss);
 	}
 
 }
