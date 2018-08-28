@@ -1,5 +1,7 @@
 package guru.streami;
 
+import org.openqa.selenium.support.ui.Wait;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -34,6 +36,6 @@ public class Sreami {
 				.sorted(sortBylength)
 				.forEach(System.out::println);
 
-
+Wait w;
 	}
 }

@@ -3,6 +3,7 @@ package string;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -10,8 +11,8 @@ import java.util.TreeMap;
 public class WorkWithString {
 
 	public static void main(String[] args) throws IOException {
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-	    String stroka =	bufferedReader.readLine();
+		//BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+	    //String stroka =	bufferedReader.readLine();
 	   // metod(stroka);
 	   // metod1(stroka);
 	    //metod2(stroka);
@@ -19,7 +20,8 @@ public class WorkWithString {
 	    //metod4(stroka);
 	   // metod5(stroka);
 	    //metod6(stroka);
-		method("sobaka");
+		//method("sobaka");
+		enTend();
 	}
 
 	private static void metod(String a){
@@ -104,6 +106,23 @@ public class WorkWithString {
 		.append("Тебе делиться в самом деле не с кем!");
 		String ss = sb.toString();
 		System.out.println(ss);
+	}
+
+	public static void enTend(){
+		String s1 = new String( "aaa");
+		String s2 = new String("ada");
+		/*s1 = s1.intern();
+		s2=s2.intern();*/
+		System.out.println(s1.equals(s2));
+		System.out.println(s1.compareTo(s2));
+		s2 =s2.replace("d","111");
+		System.out.println(s2);
+		String q = "qwerqqtyuiwetop[]asdrtuwfghjkl;'";
+		System.out.println(q.substring(7));
+		System.out.println(q.substring(q.indexOf("r"),q.lastIndexOf("w")+1));
+		Arrays.asList(q.split("q")).forEach(System.out::println);
+		System.out.println(q.replaceAll("w",""));
+
 	}
 
 }
