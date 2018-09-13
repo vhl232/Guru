@@ -1,9 +1,13 @@
 package guru.reflection;
 
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.awt.event.KeyEvent;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.TreeSet;
 
 public class MeatKenguru {
 	public static void main(String[] args) throws IllegalAccessException, InstantiationException {
@@ -15,7 +19,6 @@ public class MeatKenguru {
 		for (int i = 0; i <methods.length ; i++) {
 			System.out.println(methods[i]);
 		}
-
 		System.out.println(k.getCanonicalName());
 		Constructor<?>[] constructors = k.getConstructors();
 		for (int i = 0; i <constructors.length ; i++) {
@@ -44,5 +47,8 @@ public class MeatKenguru {
 		for (int i = 0; i <fields.length ; i++) {
 			System.out.println(fields[i]);
 		}
+		System.gc();
+
+
 	}
 }
